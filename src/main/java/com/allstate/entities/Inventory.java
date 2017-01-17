@@ -81,8 +81,8 @@ public class Inventory {
         return sellingPrice;
     }
     public void setSellingPrice(int sellingPrice) {
-        this.sellingPrice = sellingPrice;
-        //this.sellingPrice = (int) (this.actualPrice - (this.actualPrice*0.01*this.discount));
+       // this.sellingPrice = sellingPrice;
+        this.sellingPrice = (int) (this.actualPrice - (this.actualPrice*0.01*this.discount));
     }
 
 
