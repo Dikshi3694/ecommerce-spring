@@ -19,6 +19,7 @@ public class InventoryController {
     public  Inventory create(@RequestBody Inventory inventory){
         return this.service.create(inventory);
     }
+
     @RequestMapping(value ={"/{id}"}, method = RequestMethod.GET)
     public  Inventory findById(@PathVariable int id){
         return this.service.findById(id);
@@ -28,7 +29,4 @@ public class InventoryController {
     public Iterable<Inventory> findAll(){
         return this.service.findAll();
     }
-
-
-
 }

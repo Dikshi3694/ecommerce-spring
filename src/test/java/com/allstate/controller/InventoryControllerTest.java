@@ -33,6 +33,7 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.*;
 @RunWith(SpringRunner.class)
 @WebMvcTest(InventoryController.class)
 public class InventoryControllerTest {
+
     @Autowired
     private MockMvc mvc;
 
@@ -43,17 +44,18 @@ public class InventoryControllerTest {
 
     @Before
     public void setUp() throws Exception {
+
         i = new Inventory();
         i.setName("redmi");
         i.setVersion(0);
         i.setActualPrice(12000);
         i.setDiscount(10);
         i.setStockNumber("Note3");
-
     }
 
     @Test
     public void shouldCreateInventory() throws Exception {
+
         given(this.service.create(Mockito.any(Inventory.class)))
                 .willReturn(i);
 
@@ -70,6 +72,7 @@ public class InventoryControllerTest {
 
     @Test
     public void shouldNotCreateInventoryBadUrl() throws Exception {
+
         MockHttpServletRequestBuilder request = post("/productzzzzz");
 
         this.mvc.perform(request)
@@ -78,6 +81,7 @@ public class InventoryControllerTest {
     }
     @Test
     public void shouldFindById() throws Exception {
+
         given(this.service.findById(3))
                 .willReturn(i);
 
@@ -92,6 +96,7 @@ public class InventoryControllerTest {
 
     @Test
     public void shouldNotFindProductByIdThatDoesNotExist() throws Exception {
+
         MockHttpServletRequestBuilder request = get("/products/7");
 
         this.mvc.perform(request)
@@ -102,6 +107,7 @@ public class InventoryControllerTest {
 
     @Test
     public void shouldFindAllProducts() throws Exception {
+
         Inventory i1 = new Inventory();
         Inventory i2 = new Inventory();
         i1.setName("Nirmal");
@@ -118,8 +124,5 @@ public class InventoryControllerTest {
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$",hasSize(2)));
-
-
-
     }
 }

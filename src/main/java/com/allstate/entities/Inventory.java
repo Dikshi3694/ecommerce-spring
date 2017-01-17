@@ -114,5 +114,4 @@ public class Inventory {
     public void setRestriction(boolean restriction) {
         this.restriction = restriction;
     }
-
 }
